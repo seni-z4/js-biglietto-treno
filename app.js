@@ -13,17 +13,69 @@ console.log("hello-world");
 //20% per i minorenni
 //40% per i over 65
 
-let kmNumber = prompt("Number of km to the destination");
-console.log(kmNumber);
+//numbero di km
+//age
+//numbero di km *0.21
+//SE e minorenne allora un sconto del 20%
+//Altrimenti  hai over 65 anni sconto del 40%
+//altrimenti un sconto del 0%
 
-let age = prompt("the passangers age");
-console.log(age);
+//validation
+// km > 0;
+// age >= 0;
+// !isNaN(km);
+// !isNaN(age);
 
-let TotalKm = kmNumber * 0.21;
-console.log(TotalKm);
+const pricePerKm = 0.21;
 
-if (age <= 18 && age >= 65) {
-  console.log((TotalKm * 100) / 2, "this is a minaer");
+const km = parseInt(prompt("insert the km travled")); //number
+console.log(km, typeof km);
+
+const age = parseInt(prompt("insert the age")); //number
+console.log(age, typeof age);
+
+if (km > 0 && age >= 0 && !isNaN(km) && !isNaN(age)) {
+  const prezzoBase = km * pricePerKm;
+  console.log(prezzoBase);
+
+  let sconto = 0;
+  if (age < 18) {
+    sconto = prezzoBase * 0.2;
+  } else if (age > 65) {
+    sconto = prezzoBase * 0.4;
+  } else {
+    sconto = 0;
+  }
+
+  //sconto finale
+  const price = prezzoBase - sconto;
+  console.log(price.toFixed(2), price);
+
+  //html code update
+
+  const priceElement = document.getElementById("price");
+  console.log(priceElement);
+
+  priceElement.innerHTML =
+    "Prezzo del biglietto: " + price.toFixed(2) + " &euro;";
 } else {
-  console.log((TotalKm * 100) / 4, "this is a adult");
+  alert("this number is not validaed");
 }
+
+//number of km
+// const km = parseInt(prompt('number di km'));// string| null
+
+//ask the age
+// const age = parseInt(prompt('age'))
+// console.log(age);
+
+// if()
+// //calcaola il prezzo ticket :
+// //-cal the basic price o,21
+// //- cal the sconto:
+//  //- se eta
+// //- prezzo file = prezz base - sconto
+
+// //stampa il prezzo con 2 cifre
+
+// cons
